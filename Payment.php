@@ -16,7 +16,7 @@ class Payment
             'currency' => 'USD',
             'amount' => '100.05',
             'cust_order_id' => substr(md5(uniqid()), 0, 16),
-            'payment_method' => 'paypal',
+            'payment_method' => 'creditcard',
             'merchant_name' => 'test-api-name',
             'site_id' => 1,
             'return_url' => 'https://api.beyounger.com/status.html',
