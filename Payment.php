@@ -1,5 +1,5 @@
 <?php
-const merchantId = "d73d82c2801b47c8b5247ad9344d5711";
+const apiKey = "d73d82c2801b47c8b5247ad9344d5711";
 const apiSecret = "61a02d15-760d-41ca-8126-60cbb77728c8";
 
 
@@ -23,7 +23,7 @@ class Payment
             'notification_url' => 'https://api.beyounger.com/status.html',
 
             'customer' => [
-                'email' => 'hello@inst.money',
+                'email' => 'hello@gmail.com',
                 'first_name' => 'Jack',
                 'last_name' => 'Li',
                 'phone' => '+12123434235',
@@ -64,51 +64,19 @@ class Payment
                 'zipcode' => '90001'
             ]
         ];
-        $timStamp = round(microtime(true) * 1000);
-        $signature = merchantId .
+        $timeStamp = round(microtime(true) * 1000);
+        $signatureData = apiKey .
             "&" . $req['cust_order_id'] .
             "&" . $req['amount'] .
             "&" . $req['currency'] .
             "&" . apiSecret .
-            "&" . $timStamp;
+            "&" . $timeStamp;
 
-        $post = HttpUtil::post($requestPath, $req, $signature, merchantId, $timStamp);
+        $post = HttpUtil::post($requestPath, $req, $signatureData, apiKey, $timeStamp);
         echo $post;
     }
 
-    public static function testCheckOut()
-    {
-        //拿到下单成功的订单编号
-        $requestPath = "/v1/checkout";
-        $requestQueryStr = "id=2307141431422614977";
-        $timStamp = round(microtime(true) * 1000);
-        $signature = merchantId .
-            '&' . apiSecret .
-            '&' . $timStamp;
 
-        $get = HttpUtil::get($requestPath, $requestQueryStr, $signature, merchantId, $timStamp);
-        echo $get;
-    }
-
-    public static function testChoosePayment()
-    {
-        //选择支付方法
-        $requestPath = "/v1/choosePayment";
-        $req = [
-            'id' => '2307141009252506017',
-            'processor' => 'nextpay_processor'
-        ];
-        $timStamp = round(microtime(true) * 1000);
-
-        $signature = merchantId .
-            '&' . apiSecret .
-            '&' . $timStamp;
-
-        $post = HttpUtil::post($requestPath, $req, $signature, merchantId, $timStamp);
-        echo $post;
-    }
 }
 
 Payment::testPayment();
-//Payment::testCheckOut();
-//Payment::testChoosePayment();
