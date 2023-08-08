@@ -7,13 +7,13 @@ const host = "https://api.beyounger.com";
 class HttpUtil
 {
 
-    public static function post($requestPath, $reqObject, $signature, $merchantId, float $timStamp)
+    public static function post($requestPath, $reqObject, $signatureData, $apiKey, float $timStamp)
     {
         $SIGN_SEPARATOR = ":";
 
-        $sign = SHA512Util::sign($signature);
+        $sign = SHA512Util::sign($signatureData);
 
-        $authorizationStr = $merchantId
+        $authorizationStr = $apiKey
             . $SIGN_SEPARATOR
             . $timStamp
             . $SIGN_SEPARATOR
@@ -41,13 +41,13 @@ class HttpUtil
         }
     }
 
-    public static function get($requestPath, $requestQueryStr, $signature, $merchantId, $timStamp)
+    public static function get($requestPath, $requestQueryStr, $signatureData, $apiKey, $timStamp)
     {
 
         $SIGN_SEPARATOR = ':';
-        $sign = SHA512Util::sign($signature);
+        $sign = SHA512Util::sign($signatureData);
 
-        $authorizationStr = $merchantId
+        $authorizationStr = $apiKey
             . $SIGN_SEPARATOR
             . $timStamp
             . $SIGN_SEPARATOR
