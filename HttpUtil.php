@@ -11,8 +11,8 @@ class HttpUtil
     {
         $SIGN_SEPARATOR = ":";
 
-        $sign = SHA512Util::sign($signatureData);
-
+        // $sign = SHA512Util::sign($signatureData);
+        $sign = SHA256Util::sign($signatureData);
         $authorizationStr = $apiKey
             . $SIGN_SEPARATOR
             . $timStamp
@@ -45,7 +45,7 @@ class HttpUtil
     {
 
         $SIGN_SEPARATOR = ':';
-        $sign = SHA512Util::sign($signatureData);
+        $sign = SHA256Util::sign($signatureData);
 
         $authorizationStr = $apiKey
             . $SIGN_SEPARATOR

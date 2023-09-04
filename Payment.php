@@ -3,7 +3,7 @@ const apiKey = "d73d82c2801b47c8b5247ad9344d5711";
 const apiSecret = "61a02d15-760d-41ca-8126-60cbb77728c8";
 
 
-require 'SHA512Util.php';
+require 'SHA256Util.php';
 require 'HttpUtil.php';
 
 class Payment
