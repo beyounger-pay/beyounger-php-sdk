@@ -34,12 +34,13 @@ class Payment
 
             'cart_items' => [
                 [
-                    'name' => 'Product 1',
-                    'quantity' => 1,
-                    'amount' => '100.00',
-                    'currency' => 'USD',
-                    'product_id' => '12345',
-                    'category' => 'Electronics'
+                    "unitPrice" => [
+                        "currency" => "USD",
+                        "value" => 66
+                    ],
+                    "quantity" => 1,
+                    "name" => "Be The Llight Matthew 5-14 Women's One Piece Swimsuits Two Piece Swimwear Set Bathing Suits",
+                    "id" => "1130"
                 ]
             ],
 
